@@ -1,5 +1,5 @@
-import type { TestResult } from "../types";
+import type { TestRunResult } from "../types";
 
-export function toJsonReport(_results: TestResult[]): string {
-  throw new Error("not implemented");
+export function toJsonReport(result: TestRunResult): string {
+  return JSON.stringify(result, null, 2);
 }
