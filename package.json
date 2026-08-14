@@ -1,0 +1,19 @@
+{
+  "name": "openapi-testing",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run --filter '@dapi-test/*' build",
+    "typecheck": "bun run --filter '@dapi-test/*' typecheck",
+    "dev:core": "bun --watch --cwd packages/core src/index.ts",
+    "dev:cli": "bun --watch --cwd packages/cli src/index.ts",
+    "dev:ui": "bun --cwd packages/ui run dev"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.3.0"
+  }
+}
