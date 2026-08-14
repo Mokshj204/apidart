@@ -2,7 +2,7 @@ import type { OpenAPISpec, TestCase } from "../types";
 import type { GeneratorStrategy } from "./strategy";
 import { buildTestCase } from "./request-builder";
 
-const HTTP_METHODS = ["get", "post", "put", "delete", "patch"] as const;
+const HTTP_METHODS = ["get", "post", "put", "delete", "patch", "query"] as const;
 
 export const basicStrategy: GeneratorStrategy = {
   name: "basic",

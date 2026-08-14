@@ -19,12 +19,12 @@ export async function send(
     url.searchParams.set(key, String(value));
   }
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    "User-Agent": "dapi-test/0.1.0",
-    ...customHeaders,
-    ...testCase.headers,
-  };
+  // Built via Headers.set (not object spread) so that header names differing
+  // only in case — e.g. a caller-supplied "content-type" vs. the "Content-Type"
+  // default — override each other instead of both being sent.
+  const headers = new Headers({ "Content-Type": "application/json", "User-Agent": "dapi-test/0.1.0" });
+  for (const [key, value] of Object.entries(customHeaders ?? {})) headers.set(key, value);
+  for (const [key, value] of Object.entries(testCase.headers ?? {})) headers.set(key, value);
 
   const start = performance.now();
   const response = await fetch(url.toString(), {

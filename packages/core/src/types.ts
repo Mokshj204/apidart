@@ -29,7 +29,9 @@ export interface Operation {
   responses: Record<string, ResponseObject>;
 }
 
-export type PathItem = Partial<Record<"get" | "post" | "put" | "delete" | "patch", Operation>>;
+export type PathItem = Partial<
+  Record<"get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace" | "query", Operation>
+>;
 
 export interface OpenAPISpec {
   openapi: string;
@@ -39,7 +41,7 @@ export interface OpenAPISpec {
   components?: { schemas?: Record<string, unknown>; securitySchemes?: Record<string, unknown> };
 }
 
-export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "QUERY";
 
 export interface TestCase {
   id: string;
