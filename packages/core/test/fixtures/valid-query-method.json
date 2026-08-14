@@ -1,0 +1,34 @@
+{
+  "openapi": "3.2.0",
+  "info": { "title": "Query Method Fixture", "version": "1.0.0" },
+  "paths": {
+    "/widgets/search": {
+      "query": {
+        "operationId": "searchWidgets",
+        "summary": "Search widgets",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "term": { "type": "string" } },
+                "required": ["term"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "type": "object" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
