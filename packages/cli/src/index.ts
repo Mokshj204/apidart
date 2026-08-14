@@ -1,17 +1,12 @@
 #!/usr/bin/env bun
 import { Command } from "commander";
+import { createRunCommand } from "./commands/run";
 
 const program = new Command();
 
 program.name("dapi-test").description("Generate and run tests from an OpenAPI spec").version("0.1.0");
 
-program
-  .command("run")
-  .description("Generate and execute tests against a running API")
-  .requiredOption("--url <specUrl>", "OpenAPI spec URL")
-  .action(async () => {
-    throw new Error("not implemented");
-  });
+program.addCommand(createRunCommand());
 
 program
   .command("list")
